@@ -29,11 +29,11 @@ def compute_height(array,number):
 def main():
     # implement input form keyboard and from files
     userInput=input("")
-    array=[]
     if "I" in userInput.capitalize():
     #     # input from keyboard
         number = int(input(""))
         line=input().split(" ")
+        array = [0 for i in range(len(line))]
         for index in range(len(line)):
             array[index] = int(line[index])
     else:
@@ -42,6 +42,7 @@ def main():
             with open("test/"+input()) as file:
                 number = int(file.readline())
                 line=file.readline().split(" ")
+                array = [0 for i in range(len(line))]
                 for index in range(len(line)):
                     array[index] = int(line[index])
         except:
