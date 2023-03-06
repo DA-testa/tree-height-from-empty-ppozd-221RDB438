@@ -4,54 +4,54 @@ import sys
 import threading
 import numpy
 
-counted=[]
+c=[]
 
-def node_height(array, index, height):
-    if array[index]==-1:
-        counted[index]=1
+def node_h(ar, i, h):
+    if ar[i]==-1:
+        c[i]=1
         return 1
-    elif counted[array[index]]==0:
-        counted[array[index]]=node_height(array, array[index], height)
-    counted[index]=counted[array[index]]+1
-    return counted[index]
+    elif c[ar[i]]==0:
+        c[ar[i]]=node_h(ar, ar[i], h)
+    c[i]=c[ar[i]]+1
+    return c[i]
 
-def compute_height(array,number):
+def compute_h(ar,n):
     # Write this function
     # Your code here
-    max_height=0
-    for index in range(number):
-        height=node_height(array, index, 1)
-        if height>max_height:
-            max_height=height
-    return max_height
+    max_h=0
+    for i in range(n):
+        h=node_h(ar, i, 1)
+        if h>max_h:
+            max_h=h
+    return max_h
 
 
 def main():
     # implement input form keyboard and from files
-    userInput=input("")
-    if "I" in userInput.capitalize():
+    Input=input("")
+    if "I" in Input.capitalize():
     #     # input from keyboard
-        number = int(input(""))
-        line=input().split(" ")
-        array = [0 for i in range(len(line))]
-        for index in range(len(line)):
-            array[index] = int(line[index])
+        n = int(input(""))
+        ln=input().split(" ")
+        ar = [0 for i in range(len(ln))]
+        for i in range(len(ln)):
+            ar[i] = int(ln[i])
     else:
         # input from file
         try:
             with open("test/"+input()) as file:
-                number = int(file.readline())
-                line=file.readline().split(" ")
-                array = [0 for i in range(len(line))]
-                for index in range(len(line)):
-                    array[index] = int(line[index])
+                n = int(file.readline())
+                ln=file.readline().split(" ")
+                ar = [0 for i in range(len(ln))]
+                for i in range(len(ln)):
+                    ar[i] = int(ln[i])
         except:
             print("JOJO")
             return
     #print(array)
-    for index in range(len(array)):
-        counted.append(0)
-    print(compute_height(array, number))
+    for index in range(len(ar)):
+        c.append(0)
+    print(compute_h(ar, n))
      
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
